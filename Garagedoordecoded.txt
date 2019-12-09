@@ -1,0 +1,78 @@
+Garage door decoder
+Model - c220-1ka
+FCC ID - eby6f0390tx
+Freq Range - 390 MHz - 335.4	399.9
+FRN	0020947818
+FCCID 	EBY6F0390TX
+Audacity - 384mhz
+
+Garage Door Decoding 11/24/19
+
+Actual Data:
+
+101010110 - 9 Dip Switches
++-+-+-++-
+
+Decoded by Inspectrum:
+Baud Rate : 115200 : Actual - 1119744
+
+Test all standard baud rates
+110, 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 38400, 57600, 115200, 128000 and 256000
+
+Code repeats 3 times + partial packet
+
+41 symbols
+
+100110111001101110011011101110011001 10001 - Inspectrum codeing
+
+100110111001101110011011100110011011 - Dip Switch decoding - 36 bit code - 4byte (1001 = 1, 1011 = 0)
+      100110111001101110011011100110011001 - Decodes to actual dip switches using 4byte (1001 = 1, 1011 = 0)
+
+
+
+
+
+101010110
+101010110 = 0x6054abe
+
+
+100110111001101110011011100110011001
+
+
+python rfpwnon.py -f 390000000 -b 115200 -t 0000000000 -l 9 -r 3
+
+Application to use a rfcat compatible device to brute force a particular AM
+OOK or raw binary signal.
+
+optional arguments:
+  -h, --help      show this help message and exit
+  -v, --version   show program's version number and exit
+  -f BASEFREQ     Specify the target frequency to transmit on, default is
+                  915000000.
+  -b BAUDRATE     Specify the baudrate of the signal, default is 2000.
+  -l BINLENGTH    Specify the binary length of the signal to brute force. By
+                  default this is the binary length before pwm encoding. When
+                  the flag --raw is set this is the binary length of the pwm
+                  encoded signal.
+  -r REPEATTIMES  Specify the number of times to repeat the signal. By default
+                  this is set to 1 and uses the de bruijn sequence for speed.
+                  When set greater than one the script sends each possible
+                  permutation of the signal individually and takes much longer
+                  to complete. For some applications the signal is required to
+                  be sent multiple times.
+  --keys          Displays the values being transmitted in binary, hex, and
+                  decimal both before and after pwm encoding.
+  -p PPAD         Specify your own binary padding to be attached before the
+                  brute forced binary.
+  -t TPAD         Specify your own binary padding to be attached after the
+                  brute forced binary.
+  --raw           This flag disables the script from performing the pwm
+                  encoding of the binary signal. When set you must specify the
+                  full pwm encoded binary length using -l.
+  --tri           This flag sets up the script to brute force a trinary
+                  signal.
+  --show          Prints de Bruijn sequence before transmitting.
+
+
+
+

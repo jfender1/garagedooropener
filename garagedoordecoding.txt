@@ -1,0 +1,85 @@
+Garage door decoder
+Model - c220-1ka
+FCC ID - eby6f0390tx
+Freq Range - 390 MHz - 335.4	399.9
+FRN	0020947818
+FCCID 	EBY6F0390TX
+Audacity - 384mhz
+
+Garage Door Decoding 11/24/19
+
+Actual Data:
+
+101010110 - 9 Dip Switches
++-+-+-++-
+
+Decoded by Inspectrum:
+Baud Rate : 115200 : Actual - 10950
+
+Test all standard baud rates
+110, 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 38400, 57600, 115200, 128000 and 256000
+
+Code repeats 3 times + partial packet
+
+41 symbols
+
+10011011100110111001101110111001100110001 - Inspectrum codeing
+
+100110111001101110011011100110011011 - Dip Switch decoding - 36 bit code - 4byte (1001 = 1, 1011 = 0)
+
+
+101010110
+101010110
+
+p_limit: 546
+bitbuffer:: Number of rows: 3
+[00] {10} a9 c0     : 10101001 11
+[01] {10} a9 c0     : 10101001 11
+[02] { 3} a0        : 101
+
+[00] {11} 7f c0     : 01111111 110
+[01] {11} 7f c0     : 01111111 110
+
+[00] {10} a9 c0     : 10101001 11
+[01] {10} a9 c0     : 10101001 11
+Multiple scans - above code
+
+*** signal_start = 21337952, signal_end = 21385633, signal_len = 47681, pulses_found = 22
+Iteration 1. t: 486    min: 364 (10)    max: 608 (12)    delta 24580
+Iteration 2. t: 537    min: 391 (14)    max: 683 (8)    delta 6354
+Iteration 3. t: 537    min: 391 (14)    max: 683 (8)    delta 0
+Distance coding: Pulse length 537
+
+Short distance: 229, long distance: 497, packet distance: 8933
+
+p_limit: 537
+bitbuffer:: Number of rows: 2
+[00] {10} a9 c0     : 10101001 11
+[01] {10} a9 c0     : 10101001 11
+
+p_limit: 392
+bitbuffer:: Number of rows: 3
+[00] {11} 7f c0     : 01111111110 - 0x9249248
+[01] {11} 7f c0     : 01111111 110
+[02] {11} 7f c0     : 01111111 110
+
+Samples - 840
+Samples - 846
+
+baud rate 2364 - match 2400 (x)
+Baud Rate - 4800
+
+
+
+rax2 1001101110b 0110111001b 1011101110b 0110011000b 1000000000b
+
+d.RFxmit("\x26e\x1b9\x2ee\x198\x200")
+
+
+
+
+
+
+1010100111 - Decoded by rtl433 - 10 bit code - 2400 baud rate - attempt - 0x3c34e78f
+101010110 - Dip Switches - 0x6054abe
+
